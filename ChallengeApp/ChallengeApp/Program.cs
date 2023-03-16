@@ -1,5 +1,5 @@
 ﻿// Napisz Program.cs 
-// - zmienna z imieniem
+// - zmienna z imieniem 
 // - zmienna z płcią
 // - zmienna z wiekiem
 // - zweryfikować dane i wyświetlić
