@@ -8,8 +8,8 @@ namespace ChallengeApp.Tests
         public void ThereAreDifferentEmployees()
         {
             // arrange
-            var employee1 = GetUser("Kasia", "Nowakowska", "46");
-            var employee2 = GetUser("Magda", "Nowakowska", "46");
+            var employee1 = new Employee("Kasia", "Nowakowska");
+            var employee2 = new Employee("Magda", "Nowakowska");
 
             // act
             
@@ -21,8 +21,8 @@ namespace ChallengeApp.Tests
         public void TheSameSurname()
         {
             // arrange
-            var employee1 = GetUser("Kasia", "Nowakowska", "46");
-            var employee2 = GetUser("Magda", "Nowakowska", "46");
+            var employee1 = new Employee("Kasia", "Nowakowska");
+            var employee2 = new Employee("Magda", "Nowakowska");
           
             // act
 
@@ -56,9 +56,9 @@ namespace ChallengeApp.Tests
             Assert.AreEqual(score1, score2);
         }
 
-        private Employee GetUser(string name, string surname, string age) 
+        private Employee GetUser(string name, string surname) 
         {
-            return new Employee(name, surname, age);
+            return new Employee(name, surname);
 
         }
     }
