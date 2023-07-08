@@ -29,4 +29,3 @@ Console.WriteLine($"Average: {statistics.Average:N2}");
 Console.WriteLine();
 Console.WriteLine($"Ocena:{statistics.AverageLetter}");
 
-

@@ -138,5 +138,4 @@ namespace ChallengeApp.Tests
         }
 
     }
-
 }
