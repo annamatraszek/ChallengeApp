@@ -9,3 +9,4 @@ namespace ChallengeApp
         public char AverageLetter { get; set; }
     }
 }
+

@@ -136,6 +136,5 @@ namespace ChallengeApp.Tests
             //assert
             Assert.AreEqual('E', statistics.AverageLetter);
         }
-
     }
 }

@@ -18,6 +18,7 @@ while(true)
 }
 
 var statistics = employee.GetStatistics();
+
 Console.WriteLine("---------------------");
 Console.WriteLine();
 Console.WriteLine(employee.Name + " " + employee.Surname);
