@@ -4,6 +4,8 @@ namespace ChallengeApp
 {
     public class Employee
     {
+        private readonly char sex = 'M';
+
         private List<float> grades = new List<float>();
 
         public Employee()
@@ -13,6 +15,7 @@ namespace ChallengeApp
         {
             this.Name = name;
             this.Surname = surname;
+            this.sex = 'K';
         }
 
         public string Name { get; private set; }
@@ -27,7 +30,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("Nieprawidłowa wartość");
+                throw new Exception ("Nieprawidłowa wartość");
             }
         }
 
@@ -39,7 +42,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception ("String is not float");
             }
         }
 
@@ -73,8 +76,7 @@ namespace ChallengeApp
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Nieprawidłowa litera.");
-                    break;
+                    throw new Exception ("Nieprawidłowa litera.");
             }
         }
 
