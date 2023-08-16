@@ -4,11 +4,11 @@ Console.WriteLine("Witamy w Programie XYZ do oceny pracowników");
 Console.WriteLine("===============================================");
 Console.WriteLine();
 
-var employee = new Employee("Apolonia", "Nowak");
+var employee = new Supervisor("Adam", "Kamizelich");
 
 while(true)
 {
-    Console.WriteLine("Podaj kolejną ocenę pracownika: ");
+    Console.WriteLine("Podaj ocenę pracownika: ");
     var input = Console.ReadLine();
     if(input == "q") 
     {
@@ -25,7 +25,7 @@ while(true)
     }
 }
 
-var statistics = employee.GetStatistics();
+var statistics = ((IEmployee)employee).GetStatistics();
 
 Console.WriteLine("---------------------");
 Console.WriteLine();
