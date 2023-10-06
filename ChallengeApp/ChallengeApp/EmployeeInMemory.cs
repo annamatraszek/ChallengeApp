@@ -1,28 +1,15 @@
-﻿using System.Runtime.InteropServices;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
-            //: this(name, surname, 'N')
-        {      
-            this.Name = name;
-            this.Surname = surname;
+        public EmployeeInMemory(string name, string surname) 
+            : base(name, surname)
+        {
         }
 
-       //public Employee(string name, string surname, char sex)
-             //: base(name, surname, sex)
-       // {
-       // }
-
-        public string Name { get; private set; }
-
-        public string Surname { get; private set; }
-
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -30,11 +17,11 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception ("Nieprawidłowa wartość");
+                throw new Exception("Nieprawidłowa wartość");
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -42,16 +29,17 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception ("String is not float");
+                throw new Exception("String is not float");
             }
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float value = grade;
             this.AddGrade(value);
         }
-        public void AddGrade(char grade)
+
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -76,17 +64,17 @@ namespace ChallengeApp
                     this.grades.Add(20);
                     break;
                 default:
-                    throw new Exception ("Nieprawidłowa litera.");
+                    throw new Exception("Nieprawidłowa litera.");
             }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             float value = (float)grade;
             this.AddGrade(value);
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
 
@@ -123,6 +111,6 @@ namespace ChallengeApp
             }
             return statistics;
         }
+    
     }
 }
-

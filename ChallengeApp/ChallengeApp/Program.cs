@@ -4,13 +4,16 @@ Console.WriteLine("Witamy w Programie XYZ do oceny pracowników");
 Console.WriteLine("===============================================");
 Console.WriteLine();
 
-var employee = new Supervisor("Adam", "Kamizelich");
+var employee = new EmployeeInFile("Adam", "Nowak");
+//employee.AddGrade(66);
+//employee.AddGrade(79);
+//employee.AddGrade(95);
 
-while(true)
+while (true)
 {
-    Console.WriteLine("Podaj ocenę pracownika: ");
+    Console.WriteLine("podaj ocenę pracownika: ");
     var input = Console.ReadLine();
-    if(input == "q") 
+    if (input == "q")
     {
         break;
     }
@@ -19,22 +22,22 @@ while(true)
     {
         employee.AddGrade(input);
     }
-    catch(Exception e)
+    catch (Exception e)
     {
-        Console.WriteLine($"Exception catched: {e.Message}");
+        Console.WriteLine($"exception catched: {e.Message}");
     }
 }
 
-var statistics = ((IEmployee)employee).GetStatistics();
-
-Console.WriteLine("---------------------");
-Console.WriteLine();
-Console.WriteLine(employee.Name + " " + employee.Surname);
-Console.WriteLine();
-Console.WriteLine("Statystyki:");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine();
-Console.WriteLine($"Ocena:{statistics.AverageLetter}");
-
+var statistics = ((EmployeeInFile)employee).GetStatistics();
+{
+    Console.WriteLine("---------------------");
+    Console.WriteLine();
+    Console.WriteLine(employee.Name + " " + employee.Surname);
+    Console.WriteLine();
+    Console.WriteLine("Statystyki:");
+    Console.WriteLine($"Min: {statistics.Min}");
+    Console.WriteLine($"Max: {statistics.Max}");
+    Console.WriteLine($"Average: {statistics.Average:N2}");
+    Console.WriteLine();
+    Console.WriteLine($"Ocena:{statistics.AverageLetter}");
+}
