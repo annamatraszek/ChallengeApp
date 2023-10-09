@@ -2,6 +2,8 @@
 {
     public class EmployeeInFile : EmployeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
+
         private const string fileName = "grades.txt";
 
         public EmployeeInFile(string name, string surname)
@@ -17,6 +19,11 @@
                 {
                     writer.WriteLine(grade);
                 }
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -28,54 +35,53 @@
         {
             if (float.TryParse(grade, out float result))
             {
-                using (var writer = File.AppendText(fileName))
-                {
-                    writer.WriteLine(result);
-                }
+                this.AddGrade(result);
             }
             else
             {
-                throw new Exception("Nieprawidłowa wartość");
+                throw new Exception("String is not float");
             }
         }
 
         public override void AddGrade(int grade)
         {
-            if (grade >= 0 && grade <= 100)
-            {
-                using (var writer = File.AppendText(fileName))
-                {
-                    float value = grade;
-                    writer.WriteLine(value);
-                }
-            }
-            else
-            {
-                throw new Exception("Nieprawidłowa wartość");
-            }
+            float value = grade;
+            this.AddGrade(value);
+        }
+        public override void AddGrade(double grade)
+        {
+            float value = (float)grade;
+            this.AddGrade(value);
         }
 
         public override void AddGrade(char grade)
         {
-            throw new Exception("Nieprawidłowa wartość");
-        }
-
-        public override void AddGrade(double grade)
-        {
-            if (grade >= 0 && grade <= 100)
+            switch (grade)
             {
-                using (var writer = File.AppendText(fileName))
-                {
-                    float value = (float)grade;
-                    writer.WriteLine(value);
-                }
-            }
-            else
-            {
-                throw new Exception("Nieprawidłowa wartość");
+                case 'A':
+                case 'a':
+                    this.AddGrade(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.AddGrade(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.AddGrade(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.AddGrade(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.AddGrade(20);
+                    break;
+                default:
+                    throw new Exception("Nieprawidłowa litera.");
             }
         }
-        
 
         public override Statistics GetStatistics()
         {
